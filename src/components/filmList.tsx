@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from "react";
 import FilmItem from "./filmItem";
 import getPopularMovies from "@/lib/getPopularMovies";
