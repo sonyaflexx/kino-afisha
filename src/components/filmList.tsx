@@ -33,7 +33,7 @@ const FilmList = () => {
             <h1 className="font-semibold text-2xl pb-5">Список фильмов</h1>
             <ul className="flex flex-col gap-4">
                 {movies.map(movie => (
-                    <FilmItem id={movie.id} title={movie.title} />
+                    <FilmItem key={movie.id} id={movie.id} title={movie.title} />
                 ))}
             </ul>
         </section>
