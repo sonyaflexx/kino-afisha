@@ -20,7 +20,7 @@ const FilmList = () => {
         const fetchMovies = async () => {
             try {
                 const response = await getPopularMovies();
-                setMovies(response.results);
+                setMovies(response.items);
             } catch (error) {
                 console.error("Failed to fetch movies:", error);
             }
