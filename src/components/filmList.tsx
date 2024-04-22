@@ -14,6 +14,7 @@ interface Movie {
 
 const FilmList = () => {
     const movies = getPopularMovies();
+    console.log(movies)
 
     return (
         <section className="col-span-4">
