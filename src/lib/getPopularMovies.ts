@@ -8,7 +8,7 @@ const getPopularMovies = async () => {
       'Content-Type': 'application/json',
   },
   };
-  console.log(env.API_KEY)
+  
   const res = await fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=2024&month=JANUARY', options)
   
   if (!res.ok) {

@@ -4,13 +4,16 @@ import { useEffect, useState } from "react";
 import FilmItem from "./filmItem";
 import getPopularMovies from "@/lib/getPopularMovies";
 
-interface Movie {
-    id: number;
-    title: string;
+interface Genre {
+  genre: string;
 }
-  
-interface MoviesProps {
-    movies: Movie[];
+
+interface Movie {
+    kinopoiskId: number;
+    nameRu: string;
+    posterUrl: string;
+    duration: number;
+    genres: Genre[]
 }
 
 const FilmList = () => {
@@ -21,6 +24,7 @@ const FilmList = () => {
             try {
                 const response = await getPopularMovies();
                 setMovies(response.items);
+                console.log(response.items);
             } catch (error) {
                 console.error("Failed to fetch movies:", error);
             }
@@ -33,7 +37,7 @@ const FilmList = () => {
             <h1 className="font-semibold text-2xl pb-5">Список фильмов</h1>
             <ul className="flex flex-col gap-4">
                 {movies.map(movie => (
-                    <FilmItem key={movie.id} id={movie.id} title={movie.title} />
+                    <FilmItem id={movie.kinopoiskId} title={movie.nameRu} duration={movie.duration} genres={movie.genres} posterUrl={movie.posterUrl} />
                 ))}
             </ul>
         </section>
