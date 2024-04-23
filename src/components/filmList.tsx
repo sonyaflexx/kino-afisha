@@ -2,43 +2,38 @@
 
 import { useEffect, useState } from "react";
 import FilmItem from "./filmItem";
-import getPopularMovies from "@/lib/getPopularMovies";
-import Link from "next/link";
-
-interface Genre {
-  genre: string;
-}
-
-interface Movie {
-    kinopoiskId: number;
-    nameRu: string;
-    posterUrl: string;
-    duration: number;
-    genres: Genre[];
-    ratingKinopoisk: number;
-}
+import getPopularFilms from "@/hooks/getPopularFilms";
+import FilmShort from "@/types/FilmShort";
 
 const FilmList = () => {
-    const [movies, setMovies] = useState<Movie[]>([]);
+    const [films, setFilms] = useState<FilmShort[]>([]);
 
     useEffect(() => {
-        const fetchMovies = async () => {
+        const fetchFilms = async () => {
             try {
-                const response = await getPopularMovies();
-                setMovies(response.items);
+                const response = await getPopularFilms();
+                setFilms(response.items);
             } catch (error) {
-                console.error("Failed to fetch movies:", error);
+                console.error("Failed to fetch films:", error);
             }
         };
-        fetchMovies();
+        fetchFilms();
     }, []);
 
     return (
         <section className="col-span-4">
             <h1 className="font-semibold text-2xl pb-5">Список фильмов</h1>
             <ul className="flex flex-col gap-4">
-                {movies.map(movie => (
-                    <FilmItem key={movie.kinopoiskId} id={movie.kinopoiskId} title={movie.nameRu} duration={movie.duration} genres={movie.genres} posterUrl={movie.posterUrl} />
+                {films.map(film => (
+                    <FilmItem 
+                        key={film.kinopoiskId} 
+                        kinopoiskId={film.kinopoiskId} 
+                        nameRu={film.nameRu} 
+                        duration={film.duration} 
+                        genres={film.genres} 
+                        posterUrl={film.posterUrl} 
+                        year={film.year}
+                    />
                 ))}
             </ul>
         </section>

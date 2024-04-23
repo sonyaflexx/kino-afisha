@@ -2,19 +2,19 @@
 
 import FilmList from "@/components/filmList";
 import Filters from "@/components/filters";
-import getMovie from "@/lib/getMovie";
+import getFilm from "@/hooks/getFilm";
 import { useEffect, useState } from "react";
-import Movie from "@/types/Movie";
+import Film from "@/types/Film";
 import Rating from "@/components/rating";
 
 const MoviePage = ({ params }: { params: any }) => {
   const { id } = params;
-  const [movie, setMovie] = useState<Movie | null>(null);
+  const [movie, setMovie] = useState<Film | null>(null);
 
     useEffect(() => {
         const fetchMovie = async () => {
             try {
-                const movie = await getMovie(id);
+                const movie = await getFilm(id);
                 setMovie(movie);
             } catch (error) {
                 console.error("Failed to fetch movies:", error);
