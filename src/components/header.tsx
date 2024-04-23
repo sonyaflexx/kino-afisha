@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 const Header = () => {
     return (
         <header className="flex items-center justify-between py-12">
-            <span className="font-bold text-2xl">ЧТО ГЛЯНУТЬ?</span>
+            <Link href={'/'} className="font-bold text-2xl">ЧТО ГЛЯНУТЬ?</Link>
             <nav className="flex flex-1">
                 <input 
                     type="text" 
