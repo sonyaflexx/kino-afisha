@@ -1,7 +1,3 @@
-interface Genre {
-    genre: string;
-}
-  
 interface Film {
       kinopoiskId: number;
       nameRu: string;
@@ -11,7 +7,7 @@ interface Film {
       type: string;
       year: number;
       filmLength: number;
-      genres: Genre[];
+      genres: string[];
       ratingKinopoisk: number;
       description: string;
 }

@@ -7,7 +7,7 @@ interface FilmShort {
       nameRu: string;
       posterUrl: string;
       duration: number;
-      genres: Genre[];
+      genres: string[];
       year: number;
 }
 

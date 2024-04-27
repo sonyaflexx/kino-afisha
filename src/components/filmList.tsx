@@ -1,24 +1,12 @@
-'use client'
-
 import { useEffect, useState } from "react";
 import FilmItem from "./filmItem";
 import getPopularFilms from "@/hooks/getPopularFilms";
 import FilmShort from "@/types/FilmShort";
 
-const FilmList = () => {
-    const [films, setFilms] = useState<FilmShort[]>([]);
-
-    useEffect(() => {
-        const fetchFilms = async () => {
-            try {
-                const response = await getPopularFilms();
-                setFilms(response.items);
-            } catch (error) {
-                console.error("Failed to fetch films:", error);
-            }
-        };
-        fetchFilms();
-    }, []);
+const FilmList = ({ films }: { films: FilmShort[] }) => {
+    if (!films) {
+        return <div >Loading...</div>;
+    }
 
     return (
         <section className="col-span-4">
@@ -38,6 +26,7 @@ const FilmList = () => {
             </ul>
         </section>
     );
+
 };
 
 export default FilmList;

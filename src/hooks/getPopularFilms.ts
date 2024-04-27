@@ -1,12 +1,7 @@
 import env from "react-dotenv";
 import FilmShort from "@/types/FilmShort";
 
-interface filmsAndCount {
-  total: number,
-  items: FilmShort[]
-}
-
-const getPopularMovies = async () : Promise<filmsAndCount> => {
+const getPopularFilms = async () : Promise<FilmShort[]> => {
   const options = {
     method: 'GET',
     headers: {
@@ -22,8 +17,9 @@ const getPopularMovies = async () : Promise<filmsAndCount> => {
     throw new Error('Failed to fetch data')
   }
 
-  const moviesPopular : filmsAndCount = await res.json()
-  return moviesPopular;
+  const popularFilmsAndCount = await res.json()
+  const popularFilms : FilmShort[] = popularFilmsAndCount.items
+  return popularFilms;
 }
 
-export default getPopularMovies;
+export default getPopularFilms;
