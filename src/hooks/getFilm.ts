@@ -26,7 +26,6 @@ const getFilm = async ( id: any ) : Promise<Film> => {
     externalSources: externalSources.items
   }
 
-  console.log(filmInfo)
   return filmInfo;
 }
 

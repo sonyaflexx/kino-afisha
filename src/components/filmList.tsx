@@ -3,15 +3,15 @@ import FilmItem from "./filmItem";
 import getPopularFilms from "@/hooks/getPopularFilms";
 import FilmShort from "@/types/FilmShort";
 
-const FilmList = ({ films }: { films: FilmShort[] }) => {
+const FilmList = ({ title, films }: { title: string, films: FilmShort[] }) => {
     if (!films) {
         return <div >Loading...</div>;
     }
 
     return (
         <section className="col-span-4">
-            <h1 className="font-semibold text-2xl pb-5">Список фильмов</h1>
-            <ul className="flex flex-col gap-4">
+            <h2 className="font-semibold text-2xl pb-5">{title}</h2>
+            <ul className="flex overflow-auto gap-4">
                 {films.map(film => (
                     <FilmItem 
                         key={film.kinopoiskId} 
