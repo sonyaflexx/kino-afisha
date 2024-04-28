@@ -12,12 +12,21 @@ const getFilm = async ( id: any ) : Promise<Film> => {
   };
   
   const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, options)
+  const externalSourcesRes = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/external_sources`, options)
   
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
 
-  const filmInfo : Film = await res.json()
+  const resData = await res.json()
+  const externalSources = await externalSourcesRes.json()
+
+  const filmInfo = {
+    ...resData,
+    externalSources: externalSources.items
+  }
+
+  console.log(filmInfo)
   return filmInfo;
 }
 

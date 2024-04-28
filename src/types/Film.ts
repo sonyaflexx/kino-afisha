@@ -1,3 +1,11 @@
+import Genre from "./Genre";
+
+interface externalSource {
+    url: string,
+    platform: string,
+    logoUrl: string
+}
+
 interface Film {
       kinopoiskId: number;
       nameRu: string;
@@ -7,9 +15,10 @@ interface Film {
       type: string;
       year: number;
       filmLength: number;
-      genres: string[];
+      genres: Genre[];
       ratingKinopoisk: number;
       description: string;
+      externalSources: externalSource[]
 }
 
 export default Film;

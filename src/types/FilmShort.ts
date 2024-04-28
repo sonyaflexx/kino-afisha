@@ -1,13 +1,11 @@
-interface Genre {
-    genre: string;
-}
+import Genre from "./Genre";
   
 interface FilmShort {
       kinopoiskId: number;
       nameRu: string;
       posterUrl: string;
       duration: number;
-      genres: string[];
+      genres: Genre[];
       year: number;
 }
 
