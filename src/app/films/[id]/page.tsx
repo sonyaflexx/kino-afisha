@@ -1,11 +1,14 @@
 import getFilm from "@/hooks/getFilm";
 import Rating from "@/components/rating";
 import convertTime from "@/utils/convertTime";
+import GenresList from "@/components/genresList";
+import getImages from "@/hooks/getImages";
 
 const FilmPage = async ({ params }: { params: any }) => {
     const { id } = params;
     const film = await getFilm(id)
-    // const images = await getImages(id)
+    const images = await getImages(id)
+
     return (
         <section className="flex gap-8 flex-wrap justify-center">
                 <div className="flex flex-col gap-4 w-full max-w-52">
@@ -29,26 +32,29 @@ const FilmPage = async ({ params }: { params: any }) => {
                     <h1 className="text-2xl font-semibold">{film.nameRu}</h1>
                     <Rating value={film.ratingKinopoisk} />
                 </div>
-                    <ul className="flex gap-2">
-                    {
-                        film.genres.map((genre) => 
-                        <li className="p-2 bg-zinc-800 leading-none rounded-lg text-sm">{genre.genre}</li>  
-                        )
-                    }
-                    </ul>
+                    <GenresList genres={film.genres} />
                     <div className="py-2 flex flex-col gap-2">
                     <p><span className="text-zinc-400 font-semibold">Год: </span>{film.year}</p>
                     <p><span className="text-zinc-400 font-semibold">Длительность: </span>{convertTime(film.filmLength).hours} час. {convertTime(film.filmLength).minutes} мин.</p>
                     {film.slogan && <p><span className="text-zinc-400 font-semibold">Слоган: </span>{film.slogan}</p>}
                     <p className="text-zinc-200"><span className="text-zinc-400 font-semibold">Описание: </span>{film.description}</p>
-                    {/* {
-                        images.map((image) => 
-                        <li className="p-2 bg-zinc-800 leading-none rounded-lg text-sm">{image.previewUrl}</li>  
-                        )
-                    } */}
-                    </div>
+                    {images && images.length > 0 && 
+                    <section className="my-3">
+                        <h3 className="font-semibold text-lg text-zinc-100">Кадры</h3>
+                        <ul className="flex gap-3 overflow-auto flex-nowrap py-2">
+                            {images.map((image, index) => (
+                                <li key={index} className="rounded-lg flex-shrink-0 h-36">
+                                    <button className="h-full active:scale-95 hover:border-zinc-400 transition-all rounded-lg border-solid border-2 border-zinc-700">
+                                        <img src={image.previewUrl} alt={`Image ${index}`} className="h-full object-cover rounded-lg" />
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                    }
                 </div>
-            </section>
+            </div>
+        </section>
     )
 }
 

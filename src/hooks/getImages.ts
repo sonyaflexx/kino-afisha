@@ -12,10 +12,9 @@ const getImages = async ( id: any ) : Promise<Image[]> => {
     next: { revalidate: 3600 }
   };
   
-  const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/images?type=wallpaper`, options)
+  const res = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/images`, options)
   
   if (!res.ok) {
-    console.log(res)
     throw new Error('Failed to fetch data')
   }
 

@@ -9,7 +9,7 @@ const FilmList = ({ title, films }: { title: string, films: FilmShort[] }) => {
     }
 
     return (
-        <section className="col-span-4">
+        <section className="">
             <h2 className="font-semibold text-2xl pb-5">{title}</h2>
             <ul className="flex overflow-auto gap-4">
                 {films.map(film => (
