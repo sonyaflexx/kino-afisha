@@ -1,8 +1,8 @@
-import getFilm from "@/hooks/getFilm";
+import getFilm from "@/widgets/films/api/getFilm";
 import Rating from "@/components/rating";
 import convertTime from "@/utils/convertTime";
 import GenresList from "@/components/genresList";
-import getImages from "@/hooks/getImages";
+import getImages from "@/widgets/films/api/getImages";
 
 const FilmPage = async ({ params }: { params: any }) => {
     const { id } = params;

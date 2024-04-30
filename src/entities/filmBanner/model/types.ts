@@ -1,4 +1,6 @@
-import Genre from "./Genre";
+interface Genre {
+    genre: string;
+}
   
 interface FilmShort {
       kinopoiskId: number;

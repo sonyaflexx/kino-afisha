@@ -1,4 +1,4 @@
-import getPopularFilms from "@/hooks/getPopularFilms";
+import getPopularFilms from "@/widgets/films/api/getPopularFilms";
 import { FilmList } from "@/widgets/films/ui";
 
 export default async function HomePage() {

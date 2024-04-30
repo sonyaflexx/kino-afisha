@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import FilmItem from "./filmItem";
-import getPopularFilms from "@/hooks/getPopularFilms";
-import FilmShort from "@/types/FilmShort";
+import FilmItem from "../../../../entities/filmBanner/ui/filmItem";
+import getPopularFilms from "@/widgets/films/api/getPopularFilms";
+import FilmShort from "@/entities/filmBanner/model/types";
 
 const FilmList = ({ title, films }: { title: string, films: FilmShort[] }) => {
     if (!films) {
