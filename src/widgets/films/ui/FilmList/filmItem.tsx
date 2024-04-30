@@ -3,7 +3,7 @@
 import FilmShort from "@/types/FilmShort";
 import Link from "next/link";
 import { useState } from "react";
-import GenresList from "./genresList";
+import GenresList from "../../../../components/genresList";
 import convertTime from "@/utils/convertTime";
 
 const FilmItem: React.FC<FilmShort> = ({ kinopoiskId, nameRu, posterUrl, duration, genres, year}) => {

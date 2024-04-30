@@ -1,6 +1,5 @@
-import FilmList from "@/components/filmList";
-import Filters from "@/components/filters";
 import getPopularFilms from "@/hooks/getPopularFilms";
+import { FilmList } from "@/widgets/films/ui";
 
 export default async function HomePage() {
   const popularFilms = await getPopularFilms()
