@@ -17,7 +17,7 @@ const getImages = async ( id: any ) : Promise<Image[]> => {
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
-
+  
   const images = await res.json()
 
   return images.items;
