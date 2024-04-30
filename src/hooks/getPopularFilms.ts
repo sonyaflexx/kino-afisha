@@ -1,5 +1,4 @@
-import env from "react-dotenv";
-import FilmShort from "@/entities/filmBanner/model/types";
+import FilmShort from "@/types/FilmShort";
 
 const getPopularFilms = async () : Promise<FilmShort[]> => {
   const options = {

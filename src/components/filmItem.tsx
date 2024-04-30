@@ -1,14 +1,13 @@
 'use client'
 
-import FilmShort from "../model/types";
+import FilmShort from "@/types/FilmShort";
 import Link from "next/link";
 import { useState } from "react";
-import GenresList from "../../../components/genresList";
+import GenresList from "./genresList";
 import convertTime from "@/utils/convertTime";
 
 const FilmItem: React.FC<FilmShort> = ({ kinopoiskId, nameRu, posterUrl, duration, genres, year}) => {
     return (
-        <li className="pb-3">
             <Link href={`films/${kinopoiskId}`} className="relative w-52 h-full flex flex-col rounded-3xl border-solid border-2 border-zinc-400 active:scale-95 transition-all">
                     <img src={posterUrl} alt="" height={192} width={128} className="mx-auto h-full w-full rounded-3xl"/>
                     {/* <div className="flex flex-col gap-1">
@@ -24,7 +23,6 @@ const FilmItem: React.FC<FilmShort> = ({ kinopoiskId, nameRu, posterUrl, duratio
                             <GenresList genres={genres} />
                         </div>
             </Link>
-        </li>
     );
 };
 

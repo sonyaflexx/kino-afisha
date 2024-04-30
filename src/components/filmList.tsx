@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import FilmItem from "../../../../entities/filmBanner/ui/filmItem";
-import getPopularFilms from "@/widgets/films/api/getPopularFilms";
-import FilmShort from "@/entities/filmBanner/model/types";
+import FilmItem from "./filmItem";
+import FilmShort from "@/types/FilmShort";
 
 const FilmList = ({ title, films }: { title: string, films: FilmShort[] }) => {
     if (!films) {
@@ -9,7 +7,7 @@ const FilmList = ({ title, films }: { title: string, films: FilmShort[] }) => {
     }
 
     return (
-        <section className="">
+        <section className="w-full">
             <h2 className="font-semibold text-2xl pb-5">{title}</h2>
             <ul className="flex overflow-auto gap-4 pb-3">
                 {films.map((film, index) => (
